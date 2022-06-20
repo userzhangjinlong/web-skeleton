@@ -1,4 +1,4 @@
-package linkFactory
+package linkfactory
 
 import (
 	"gorm.io/gorm"

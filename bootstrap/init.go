@@ -6,10 +6,10 @@ import (
 	"github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
-	"linkr-frame/app/constDir"
+	"linkr-frame/app/constdir"
 	"linkr-frame/config"
 	"linkr-frame/global"
-	"linkr-frame/linkFactory"
+	"linkr-frame/linkfactory"
 	"log"
 	"os"
 	"time"
@@ -57,11 +57,11 @@ func InitLogConfig() {
 //初始化数据库
 func InitMysql() {
 
-	db, err := linkFactory.GetMysql(constDir.LinkIt)
+	db, err := linkfactory.GetMysql(constdir.LinkIt)
 	if err != nil {
 		panic(fmt.Sprintf("linkIt 数据库连接异常:%s", err))
 	}
-	schemaDb, err := linkFactory.GetMysql(constDir.Schema)
+	schemaDb, err := linkfactory.GetMysql(constdir.Schema)
 	if err != nil {
 		panic(fmt.Sprintf("schemaDb 数据库连接异常:%s", err))
 	}
@@ -71,7 +71,7 @@ func InitMysql() {
 
 //初始化redis
 func InitRedis() {
-	redis, err := linkFactory.GetRedis()
+	redis, err := linkfactory.GetRedis()
 	if err != nil {
 		panic(fmt.Sprintf("linkIt redis连接异常:%s", err))
 	}

@@ -1,4 +1,4 @@
-package MysqlCommand
+package mysqlcommand
 
 import (
 	"github.com/spf13/cobra"

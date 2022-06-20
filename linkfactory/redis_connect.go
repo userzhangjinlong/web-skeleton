@@ -1,4 +1,4 @@
-package linkFactory
+package linkfactory
 
 import (
 	"github.com/go-redis/redis"

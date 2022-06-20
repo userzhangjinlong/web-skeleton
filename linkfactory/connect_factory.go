@@ -1,9 +1,9 @@
-package linkFactory
+package linkfactory
 
 import (
 	"fmt"
 	"github.com/go-redis/redis"
-	"linkr-frame/app/constDir"
+	"linkr-frame/app/constdir"
 	"linkr-frame/global"
 
 	//"github.com/go-redis/redis"
@@ -104,8 +104,8 @@ func NewConnect(connect string, library string) *Connect {
 //getDbLibrary 获取db dsn
 func getDbLibrary(library string) string {
 	var sourceMap = map[string]string{
-		constDir.LinkIt: global.Config.Mysql.LinkItDb,
-		constDir.Schema: global.Config.Mysql.SchemaDb,
+		constdir.LinkIt: global.Config.Mysql.LinkItDb,
+		constdir.Schema: global.Config.Mysql.SchemaDb,
 	}
 	source := sourceMap[library]
 	source += "?charset=" + global.Config.Mysql.Charset +

@@ -1,4 +1,4 @@
-package MysqlCommand
+package mysqlcommand
 
 import "linkr-frame/global"
 

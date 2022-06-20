@@ -1,4 +1,4 @@
-package InformationSchema
+package informationschema
 
 type Columns struct {
 	TableCatalog           string `gorm:"column:TABLE_CATALOG" json:"tableCatalog"`

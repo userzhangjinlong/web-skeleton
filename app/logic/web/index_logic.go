@@ -2,7 +2,7 @@ package web
 
 import (
 	"encoding/json"
-	"linkr-frame/app/model/LinkrIt"
+	"linkr-frame/app/model/linkrit"
 	"linkr-frame/global"
 )
 
@@ -14,14 +14,14 @@ func (i *IndexLogic) Index() string {
 	//example model
 	//异步无问题
 	//go func() {
-	//	var testModel LinkrIt.Test
+	//	var testModel linkrit.Test
 	//	testModel.Username = "12334"
 	//	testModel.Password = "erwerewr"
 	//	global.LinkItDB.Create(&testModel)
 	//}()
 
 	//同步测试
-	var testModel LinkrIt.Test
+	var testModel linkrit.Test
 	err := global.LinkItDB.Model(&testModel).Where("id = ?", 2442).Find(&testModel).Error
 	if err != nil {
 		return "查询错误"

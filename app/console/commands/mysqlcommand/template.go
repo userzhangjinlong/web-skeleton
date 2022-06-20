@@ -1,4 +1,4 @@
-package MysqlCommand
+package mysqlcommand
 
 import (
 	"bytes"
@@ -70,13 +70,13 @@ func (db *DatabaseTemplate) AssemblyColumns(tbColumns []*TableColumn) []*Databas
 
 //Generate 处理渲染模板内容
 func (db *DatabaseTemplate) Generate(dataBaseName string, tableName string, tplColumns []*DatabaseColumn) error {
-	tpl := template.Must(template.New("MysqlCommand").Funcs(template.FuncMap{
+	tpl := template.Must(template.New("mysqlcommand").Funcs(template.FuncMap{
 		"index": utils.UnderscoreToUpperCamelCase,
 	}).Parse(db.databaseTpl))
 
 	tplDB := StructTemplateDB{
 		TableName:    tableName,
-		DatabaseName: utils.Capitalize(dataBaseName),
+		DatabaseName: utils.ToLower(dataBaseName),
 		Column:       tplColumns,
 	}
 
@@ -86,15 +86,15 @@ func (db *DatabaseTemplate) Generate(dataBaseName string, tableName string, tplC
 	if err != nil {
 		return err
 	}
-	putStringInFile(dataBaseName, utils.UnderscoreToUpperCamelCase(tableName), buf.String())
+	putStringInFile(dataBaseName, tableName, buf.String())
 
 	return nil
 }
 
 //putInFile 将写入buff池内的内容写入指定文件
 func putStringInFile(dataBaseName string, fileName string, bufString string) error {
-	utils.CreateIfNotExistDir("app/Model/" + utils.UnderscoreToUpperCamelCase(dataBaseName))
-	file, err := os.OpenFile("app/Model/"+utils.Capitalize(dataBaseName)+"/"+fileName+".go", os.O_CREATE|os.O_WRONLY, 0664)
+	utils.CreateIfNotExistDir("app/model/" + utils.UnderscoreToUpperCamelCase(dataBaseName))
+	file, err := os.OpenFile("app/model/"+dataBaseName+"/"+utils.ToLower(fileName)+".go", os.O_CREATE|os.O_WRONLY, 0664)
 
 	if err != nil {
 		fmt.Println("open file err", err)

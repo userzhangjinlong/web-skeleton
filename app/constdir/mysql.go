@@ -1,4 +1,4 @@
-package constDir
+package constdir
 
 const (
 	LinkIt = "link_it"
